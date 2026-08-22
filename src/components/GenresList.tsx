@@ -6,9 +6,10 @@ import { getCroppedUrl } from '@/services/getCroppedUrl';
 
 interface Props {
   onGenreSelect: (genre: Genre) => void;
+  selectedGenre: Genre |null
 }
 
-function GenresList({ onGenreSelect: onGenreSelect }: Props) {
+function GenresList({selectedGenre, onGenreSelect: onGenreSelect }: Props) {
   const { isLoading, entities: genres, error } = useGenre();
 
   return (
@@ -30,7 +31,10 @@ function GenresList({ onGenreSelect: onGenreSelect }: Props) {
                 width={'50px'}
                 borderRadius={'5px'}
               />
-              <Link variant={'plain'}>{genre.name}</Link>
+              <Link variant={'plain'}
+              
+              fontWeight={selectedGenre?.id === genre.id ? 'bolder':'normal'}
+              >{genre.name}</Link>
             </List.Item>
           ))}
         </List.Root>

@@ -23,7 +23,7 @@ function App() {
         <NavBar />
       </GridItem>
       <GridItem area={'aside'} hideBelow={'lg'}>
-        <GenresList onGenreSelect={(genre) => setSelectedGenre(genre)} />
+        <GenresList selectedGenre={selectedGenre?selectedGenre:null} onGenreSelect={(genre) => setSelectedGenre(genre)} />
       </GridItem>
       <GridItem area={'main'}>
         <GameGrid selectedGenre={selectedGenre ? selectedGenre : null} />
