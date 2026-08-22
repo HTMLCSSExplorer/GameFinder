@@ -32,7 +32,6 @@ export const useFetchData = <T>(
         })
         .finally(() => {
           if (!controller.signal.aborted) {
-            console.log('not aborted');
             setLoading(false);
           }
         });

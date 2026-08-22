@@ -13,10 +13,11 @@ function App() {
       <GridItem area={'nav'}>
         <NavBar />
       </GridItem>
-      <GridItem area={'aside'} hideBelow={'lg'}></GridItem>
+      <GridItem area={'aside'} hideBelow={'lg'}>
+        asside
+      </GridItem>
       <GridItem area={'main'}>
-
-        <GameGrid/>
+        <GameGrid />
       </GridItem>
     </Grid>
   );
