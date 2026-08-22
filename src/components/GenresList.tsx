@@ -9,7 +9,7 @@ interface Props {
 }
 
 function GenresList({ onGenreSelect: onGenreSelect }: Props) {
-  const { isLoading, enntities: genres, error } = useGenre();
+  const { isLoading, entities: genres, error } = useGenre();
 
   return (
     <>
@@ -30,7 +30,7 @@ function GenresList({ onGenreSelect: onGenreSelect }: Props) {
                 width={'50px'}
                 borderRadius={'5px'}
               />
-              <Link>{genre.name}</Link>
+              <Link variant={'plain'}>{genre.name}</Link>
             </List.Item>
           ))}
         </List.Root>

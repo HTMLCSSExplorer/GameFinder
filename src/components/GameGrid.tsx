@@ -3,9 +3,16 @@ import { Text, SimpleGrid } from '@chakra-ui/react';
 import GameCard from './GameCard';
 import GameCardSkeltonn from './GameCardSkeltonn';
 import BoxContainer from './BoxContainer';
+import type { Genre } from '@/hooks/fetchGenre';
 
-function GameGrid() {
-  const { error, enntities: games, isLoading } = useGames();
+
+interface Props {
+  selectedGenre :Genre | null
+}
+
+
+function GameGrid({selectedGenre}:Props) {
+  const { error, entities: games, isLoading } = useGames(selectedGenre);
 
   const renderSkelton = () => {
     return Array.from({ length: 20 }).map((_, i) => (
@@ -35,7 +42,6 @@ function GameGrid() {
         }}
         gap={2}
         padding={3}
-      
       >
         {isLoading ? renderSkelton() : renderGameCard(games)}
       </SimpleGrid>

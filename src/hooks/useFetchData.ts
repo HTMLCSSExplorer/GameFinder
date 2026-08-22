@@ -9,10 +9,10 @@ interface FetchedApiResponse<T> {
 
 export const useFetchData = <T>(
   endpoint: string,
-  config?: AxiosRequestConfig,
+  requestConfig?: AxiosRequestConfig,
   deps?: any[]
 ) => {
-  const [enntities, setEnntity] = useState<T[]>([]);
+  const [entities, setEntity] = useState<T[]>([]);
   const [error, setError] = useState<AxiosError | null>(null);
   const [isLoading, setLoading] = useState(false);
 
@@ -24,9 +24,9 @@ export const useFetchData = <T>(
       apiClient
         .get<FetchedApiResponse<T>>(endpoint, {
           signal: controller.signal,
-          ...config,
+          ...requestConfig,
         })
-        .then((res) => setEnntity(res.data.results))
+        .then((res) => setEntity(res.data.results))
         .catch((err: AxiosError) => {
           if (!(err instanceof CanceledError)) setError(err);
         })
@@ -42,7 +42,7 @@ export const useFetchData = <T>(
 
   return {
     error,
-    enntities,
+    entities,
     isLoading,
   };
 };

@@ -1,3 +1,4 @@
+import type { Genre } from './fetchGenre';
 import { useFetchData } from './useFetchData';
 
 export interface Platform {
@@ -13,10 +14,14 @@ export interface Game {
   metacritic: number;
 }
 
+export const useGames = (selectedGenre: Genre | null) =>
+  useFetchData<Game>(
+    '/games',
+    {
+      params: {
+        genres: selectedGenre?.id,
+      },
+    },
 
-
-
-export const useGames = () =>
-  useFetchData<Game>('/games', {
-    params: {},
-  });
+    [selectedGenre?.id]
+  );
