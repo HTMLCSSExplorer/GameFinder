@@ -1,9 +1,27 @@
-import { useGames } from '@/hooks/fetchGames';
+import { useGames, type Game } from '@/hooks/fetchGames';
 import { Text, SimpleGrid } from '@chakra-ui/react';
 import GameCard from './GameCard';
+import GameCardSkeltonn from './GameCardSkeltonn';
+import BoxContainer from './BoxContainer';
 
 function GameGrid() {
-  const { error, enntities: games } = useGames();
+  const { error, enntities: games, isLoading } = useGames();
+
+  const renderSkelton = () => {
+    return Array.from({ length: 20 }).map((_, i) => (
+      <BoxContainer key={i}>
+        <GameCardSkeltonn />
+      </BoxContainer>
+    ));
+  };
+
+  const renderGameCard = (games: Game[]) => {
+    return games.map((game) => (
+      <BoxContainer key={game.id}>
+        <GameCard game={game}></GameCard>
+      </BoxContainer>
+    ));
+  };
 
   return (
     <>
@@ -18,9 +36,7 @@ function GameGrid() {
         gap={2}
         padding={3}
       >
-        {games.map((game) => (
-          <GameCard key={game.id} game={game}></GameCard>
-        ))}
+        {isLoading ? renderSkelton() : renderGameCard(games)}
       </SimpleGrid>
     </>
   );

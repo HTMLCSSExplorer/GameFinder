@@ -14,7 +14,7 @@ export const useFetchData = <T>(
 ) => {
   const [enntities, setEnntity] = useState<T[]>([]);
   const [error, setError] = useState<AxiosError | null>(null);
-  const [isLoadinng, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(
     () => {
@@ -43,6 +43,6 @@ export const useFetchData = <T>(
   return {
     error,
     enntities,
-    isLoadinng,
+    isLoading,
   };
 };
