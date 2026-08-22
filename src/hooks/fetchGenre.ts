@@ -1,12 +1,10 @@
-import { useFetchData } from "./useFetchData";
-
+import { useFetchData } from './useFetchData';
 
 export interface Genre {
-    id:number
-name:string
-slug:string
+  id: number;
+  name: string;
+  slug: string;
+  image_background: string;
 }
 
-
-
-export const ueGenre =()=> useFetchData<Genre>('/genres')
+export const useGenre = () => useFetchData<Genre>('/genres');

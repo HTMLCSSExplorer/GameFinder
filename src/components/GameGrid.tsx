@@ -35,6 +35,7 @@ function GameGrid() {
         }}
         gap={2}
         padding={3}
+      
       >
         {isLoading ? renderSkelton() : renderGameCard(games)}
       </SimpleGrid>
