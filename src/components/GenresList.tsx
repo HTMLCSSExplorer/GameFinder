@@ -6,12 +6,15 @@ import { getCroppedUrl } from '@/services/getCroppedUrl';
 
 interface Props {
   onGenreSelect: (genre: Genre) => void;
-  selectedGenre: Genre |null
+  selectedGenre: Genre | null;
 }
 
-function GenresList({selectedGenre, onGenreSelect: onGenreSelect }: Props) {
+function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
   const { isLoading, entities: genres, error } = useGenre();
 
+  const isGenreSelected = (genre: Genre) => {
+    return genre.id === selectedGenre?.id;
+  };
   return (
     <>
       {error && <Text>{error.message}</Text>}
@@ -31,10 +34,13 @@ function GenresList({selectedGenre, onGenreSelect: onGenreSelect }: Props) {
                 width={'50px'}
                 borderRadius={'5px'}
               />
-              <Link variant={'plain'}
-              
-              fontWeight={selectedGenre?.id === genre.id ? 'bolder':'normal'}
-              >{genre.name}</Link>
+              <Link
+                variant={'plain'}
+                colorPalette={isGenreSelected(genre) ? 'green' : ''}
+                fontWeight={isGenreSelected(genre) ? 'bolder' : 'normal'}
+              >
+                {genre.name}
+              </Link>
             </List.Item>
           ))}
         </List.Root>
