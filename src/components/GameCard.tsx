@@ -14,7 +14,7 @@ function GameCard({ game }: Props) {
       <Image src={getCroppedUrl(game.background_image)} />
       <Card.Body gapY={3}>
         <Heading fontSize={'lg'} fontWeight={'bold'}>
-          {game.name}
+          {game.name}- {game.released}
         </Heading>
         <HStack justifyContent={'space-between'}>
           {

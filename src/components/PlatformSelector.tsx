@@ -34,7 +34,10 @@ function PlatformSelector({ selectedPlatform, onPlatformChange }: Props) {
                 key={platform.id}
                 value={platform.slug}
                 className="capitalize"
-                onSelect={() => onPlatformChange(platform)}
+                onSelect={() => {
+                  onPlatformChange(platform);
+                  setSelectorStatus(!isSelectorOpen);
+                }}
               >
                 {platform.name}
               </Menu.Item>
