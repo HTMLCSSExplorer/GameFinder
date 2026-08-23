@@ -23,7 +23,7 @@ function PlatformSelector({ selectedPlatform, onPlatformChange }: Props) {
           onClick={() => setSelectorStatus(!isSelectorOpen)}
         >
           {isSelectorOpen ? <BsChevronDown /> : <BsChevronRight />}
-          {selectedPlatform ? selectedPlatform.name : 'Relevance'}
+          {selectedPlatform ? selectedPlatform.name : 'Platforms'}
         </Button>
       </Menu.Trigger>
       <Portal>

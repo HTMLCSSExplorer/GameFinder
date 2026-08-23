@@ -1,5 +1,5 @@
 import { useGenre, type Genre } from '@/hooks/fetchGenre';
-import { Box, List, Text, Image, Link, Button } from '@chakra-ui/react';
+import { Box, List, Text, Image, Link } from '@chakra-ui/react';
 
 import SpinnerComp from './SpinnerComp';
 import { getCroppedUrl } from '@/services/getCroppedUrl';
@@ -9,10 +9,7 @@ interface Props {
   selectedGenre: Genre | null;
 }
 
-function GenresList({
-  selectedGenre,
-  onGenreSelect: onGenreSelect,
-}: Props) {
+function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
   const { isLoading, entities: genres, error } = useGenre();
 
   const isGenreSelected = (genre: Genre) => {
@@ -46,7 +43,6 @@ function GenresList({
               </Link>
             </List.Item>
           ))}
-          
         </List.Root>
       </Box>
     </>
