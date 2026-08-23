@@ -1,15 +1,20 @@
 import { useGenre, type Genre } from '@/hooks/fetchGenre';
-import { Box, List, Text, Image, Link } from '@chakra-ui/react';
+import { Box, List, Text, Image, Link, Button } from '@chakra-ui/react';
 
 import SpinnerComp from './SpinnerComp';
 import { getCroppedUrl } from '@/services/getCroppedUrl';
 
 interface Props {
   onGenreSelect: (genre: Genre) => void;
+  onGenreClear: () => void;
   selectedGenre: Genre | null;
 }
 
-function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
+function GenresList({
+  selectedGenre,
+  onGenreSelect: onGenreSelect,
+  onGenreClear,
+}: Props) {
   const { isLoading, entities: genres, error } = useGenre();
 
   const isGenreSelected = (genre: Genre) => {
@@ -43,6 +48,16 @@ function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
               </Link>
             </List.Item>
           ))}
+          {!isLoading && (
+            <List.Item
+              className="cursor-pointer"
+              alignItems={'center'}
+              gap={2}
+              onClick={onGenreClear}
+            >
+              <Button width={'full'}>Clear</Button>
+            </List.Item>
+          )}
         </List.Root>
       </Box>
     </>

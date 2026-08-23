@@ -7,4 +7,4 @@ export interface Platform {
 }
 
 export const usePlatforms = () =>
-  useFetchData<Platform>('/xplatforms/lists/parents');
+  useFetchData<Platform>('/platforms/lists/parents');
