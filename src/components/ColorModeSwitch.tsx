@@ -8,7 +8,7 @@ function ColorModeSwitch() {
       <Switch.Root colorPalette="green">
         <Switch.HiddenInput />
         <Switch.Control onClick={toggleColorMode} />
-        <Switch.Label>
+        <Switch.Label whiteSpace={'nowrap'}>
           {colorMode === 'dark' ? 'Light Mode' : 'Dark Mode'}
         </Switch.Label>
       </Switch.Root>
