@@ -1,13 +1,15 @@
 import { usePlatforms, type Platform } from '@/hooks/usePlatforms';
 import { Button, Menu, Portal } from '@chakra-ui/react';
+import { useState } from 'react';
+import { BsChevronDown, BsChevronRight } from 'react-icons/bs';
 
 interface Props {
   onPlatformChange: (platform: Platform) => void;
-  onPlatformClearSelection: ()=>void;
   selectedPlatform: Platform | null;
 }
 
-function PlatformSelector({ selectedPlatform, onPlatformChange,onPlatformClearSelection }: Props) {
+function PlatformSelector({ selectedPlatform, onPlatformChange }: Props) {
+  const [isSelectorOpen, setSelectorStatus] = useState(false);
   const { entities: platforms, error } = usePlatforms();
 
   if (error) return;
@@ -15,7 +17,12 @@ function PlatformSelector({ selectedPlatform, onPlatformChange,onPlatformClearSe
   return (
     <Menu.Root closeOnSelect>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setSelectorStatus(!isSelectorOpen)}
+        >
+          {isSelectorOpen ? <BsChevronDown /> : <BsChevronRight />}
           {selectedPlatform ? selectedPlatform.name : 'Relevance'}
         </Button>
       </Menu.Trigger>
@@ -32,11 +39,6 @@ function PlatformSelector({ selectedPlatform, onPlatformChange,onPlatformClearSe
                 {platform.name}
               </Menu.Item>
             ))}
-             <Menu.Item
-             value='clear'
-             onSelect={onPlatformClearSelection}
-            
-             >Clear</Menu.Item>
           </Menu.Content>
         </Menu.Positioner>
       </Portal>

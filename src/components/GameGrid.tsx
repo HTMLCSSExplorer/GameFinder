@@ -3,18 +3,15 @@ import { Text, SimpleGrid } from '@chakra-ui/react';
 import GameCard from './GameCard';
 import GameCardSkeltonn from './GameCardSkeltonn';
 import BoxContainer from './BoxContainer';
-import type { Genre } from '@/hooks/fetchGenre';
-import type { Platform } from '@/hooks/usePlatforms';
 
+import type { GameQuery } from '@/App';
 
 interface Props {
-  selectedGenre :Genre | null
-  selectedPlatform :Platform | null
+  gameQuery: GameQuery;
 }
 
-
-function GameGrid({selectedPlatform,selectedGenre}:Props) {
-  const { error, entities: games, isLoading } = useGames(selectedGenre,selectedPlatform);
+function GameGrid({ gameQuery }: Props) {
+  const { error, entities: games, isLoading } = useGames(gameQuery);
 
   const renderSkelton = () => {
     return Array.from({ length: 20 }).map((_, i) => (

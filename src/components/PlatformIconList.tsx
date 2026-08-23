@@ -1,5 +1,3 @@
-import type { Platform } from '@/hooks/fetchGames';
-
 import { HStack, Icon } from '@chakra-ui/react';
 
 interface Props {
@@ -17,6 +15,7 @@ import {
 import { MdPhoneIphone, MdGamepad, MdPieChart } from 'react-icons/md';
 import { BsGlobe } from 'react-icons/bs';
 import type { IconType } from 'react-icons/lib';
+import type { Platform } from '@/hooks/usePlatforms';
 
 function PlatformIconList({ platforms }: Props) {
   const iconMap: { [key: string]: IconType } = {
@@ -24,12 +23,18 @@ function PlatformIconList({ platforms }: Props) {
     mac: FaApple,
     windows: FaWindows,
     linux: FaLinux,
-    playstation: FaPlaystation,
     xbox: FaXbox,
     iphone: MdPhoneIphone,
     ninntendo: MdGamepad,
     web: BsGlobe,
     pc: MdPieChart,
+    playstation: FaPlaystation,
+    playstation2: FaPlaystation,
+    playstation3: FaPlaystation,
+    playstation4: FaPlaystation,
+    playstation5: FaPlaystation,
+    psp: FaPlaystation,
+    'ps-vita': FaPlaystation,
   };
   return (
     <>

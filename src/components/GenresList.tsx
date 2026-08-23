@@ -6,14 +6,12 @@ import { getCroppedUrl } from '@/services/getCroppedUrl';
 
 interface Props {
   onGenreSelect: (genre: Genre) => void;
-  onGenreClear: () => void;
   selectedGenre: Genre | null;
 }
 
 function GenresList({
   selectedGenre,
   onGenreSelect: onGenreSelect,
-  onGenreClear,
 }: Props) {
   const { isLoading, entities: genres, error } = useGenre();
 
@@ -48,16 +46,7 @@ function GenresList({
               </Link>
             </List.Item>
           ))}
-          {!isLoading && (
-            <List.Item
-              className="cursor-pointer"
-              alignItems={'center'}
-              gap={2}
-              onClick={onGenreClear}
-            >
-              <Button width={'full'}>Clear</Button>
-            </List.Item>
-          )}
+          
         </List.Root>
       </Box>
     </>
