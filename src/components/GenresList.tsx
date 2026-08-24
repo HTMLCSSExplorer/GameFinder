@@ -32,7 +32,7 @@ function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
               onClick={() => onGenreSelect(genre)}
             >
               <Image
-                src={getCroppedUrl(genre.background_image)}
+                src={getCroppedUrl(genre.image_background)}
                 width={'50px'}
                 borderRadius={'5px'}
                 objectFit="cover"
