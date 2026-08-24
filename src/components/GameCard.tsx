@@ -1,8 +1,9 @@
 import type { Game } from '@/hooks/fetchGames';
 import { getCroppedUrl } from '@/services/getCroppedUrl';
-import { Card, Heading, HStack, Image } from '@chakra-ui/react';
+import { Card, Heading, HStack, Image,Box } from '@chakra-ui/react';
 import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
+import Emoji from './emoji';
 
 interface Props {
   game: Game;
@@ -10,12 +11,13 @@ interface Props {
 
 function GameCard({ game }: Props) {
   return (
-    <Card.Root  _hover={{
-      transform:"scale(105%)",
-      transitionDuration:'200ms',
-      cursor:'pointer'
-
-    }} >
+    <Card.Root
+      _hover={{
+        transform: 'scale(105%)',
+        transitionDuration: '200ms',
+        cursor: 'pointer',
+      }}
+    >
       <Image src={getCroppedUrl(game.background_image)} />
       <Card.Body gapY={3}>
         <HStack justifyContent={'space-between'}>
@@ -28,6 +30,9 @@ function GameCard({ game }: Props) {
         </HStack>
         <Heading fontSize={'lg'} fontWeight={'bold'}>
           {game.name}{' '}
+          <Box marginTop={3}>
+            <Emoji rating={game.rating_top} />
+          </Box>
         </Heading>
       </Card.Body>
     </Card.Root>
