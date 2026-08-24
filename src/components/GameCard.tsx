@@ -10,12 +10,14 @@ interface Props {
 
 function GameCard({ game }: Props) {
   return (
-    <Card.Root>
+    <Card.Root  _hover={{
+      transform:"scale(105%)",
+      transitionDuration:'200ms',
+      cursor:'pointer'
+
+    }} >
       <Image src={getCroppedUrl(game.background_image)} />
       <Card.Body gapY={3}>
-        <Heading fontSize={'lg'} fontWeight={'bold'}>
-          {game.name}- {game.released}
-        </Heading>
         <HStack justifyContent={'space-between'}>
           {
             <PlatformIconList
@@ -24,6 +26,9 @@ function GameCard({ game }: Props) {
           }
           <CriticScore score={game.metacritic} />
         </HStack>
+        <Heading fontSize={'lg'} fontWeight={'bold'}>
+          {game.name}{' '}
+        </Heading>
       </Card.Body>
     </Card.Root>
   );

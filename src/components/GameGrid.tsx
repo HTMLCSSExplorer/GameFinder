@@ -37,9 +37,9 @@ function GameGrid({ gameQuery }: Props) {
           base: 1,
           md: 2,
           lg: 3,
-          xl: 5,
+          xl: 4,
         }}
-        gap={2}
+        gap={4}
         padding={3}
       >
         {isLoading ? renderSkelton() : renderGameCard(games)}
