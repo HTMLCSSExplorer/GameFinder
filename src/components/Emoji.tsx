@@ -12,14 +12,17 @@ function Emoji({ rating }: Props) {
     3: {
       src: meh,
       alt: 'meh',
+      boxSize:'35px'
     },
     4: {
       src: tUp,
       alt: 'recommended',
+      boxSize:'25px'
     },
     5: {
       src: bullsEye,
       alt: 'Acceptional',
+      boxSize:'35px'
     },
   };
 

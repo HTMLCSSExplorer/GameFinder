@@ -10,7 +10,7 @@ interface Props {
 }
 
 function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
-  const { isLoading, entities: genres, error } = useGenre();
+  const { isLoading, entities: genres } = useGenre();
 
   const isGenreSelected = (genre: Genre) => {
     return genre.id === selectedGenre?.id;
@@ -20,7 +20,6 @@ function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
       <Heading fontSize={'2xl'} marginBottom={3}>
         Genres
       </Heading>
-      {error && <Text>{error.message}</Text>}
       <Box>
         <List.Root variant={'plain'} gap={4}>
           {isLoading && <SpinnerComp />}
@@ -33,7 +32,7 @@ function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
               onClick={() => onGenreSelect(genre)}
             >
               <Image
-                src={getCroppedUrl(genre.image_background)}
+                src={getCroppedUrl(genre.background_image)}
                 width={'50px'}
                 borderRadius={'5px'}
                 objectFit="cover"
