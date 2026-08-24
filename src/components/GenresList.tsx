@@ -1,5 +1,5 @@
 import { useGenre, type Genre } from '@/hooks/fetchGenre';
-import { Box, List, Text, Image, Link, Heading } from '@chakra-ui/react';
+import { Box, List, Image, Link, Heading } from '@chakra-ui/react';
 
 import SpinnerComp from './SpinnerComp';
 import { getCroppedUrl } from '@/services/getCroppedUrl';

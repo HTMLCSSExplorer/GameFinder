@@ -1,11 +1,6 @@
 import { Menu, Button, Portal } from '@chakra-ui/react';
 import { useState } from 'react';
-import {
-  BsChevronDoubleDown,
-  BsChevronDoubleRight,
-  BsChevronDown,
-  BsChevronRight,
-} from 'react-icons/bs';
+import { BsChevronDown, BsChevronRight } from 'react-icons/bs';
 
 export type SortOrder =
   'relevance' | '-added' | '-released' | '-created' | '-updated' | '-rating';

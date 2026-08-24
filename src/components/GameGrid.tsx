@@ -29,22 +29,20 @@ function GameGrid({ gameQuery }: Props) {
     ));
   };
 
+  if (error) return <Text>{error && error?.message}</Text>;
   return (
-    <>
-      <Text>{error && error?.message}</Text>
-      <SimpleGrid
-        columns={{
-          base: 1,
-          md: 2,
-          lg: 3,
-          xl: 4,
-        }}
-        gap={4}
-        padding={3}
-      >
-        {isLoading ? renderSkelton() : renderGameCard(games)}
-      </SimpleGrid>
-    </>
+    <SimpleGrid
+      columns={{
+        base: 1,
+        md: 2,
+        lg: 3,
+        xl: 4,
+      }}
+      gap={4}
+      padding={3}
+    >
+      {isLoading ? renderSkelton() : renderGameCard(games)}
+    </SimpleGrid>
   );
 }
 
