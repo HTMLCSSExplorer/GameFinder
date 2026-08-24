@@ -1,5 +1,5 @@
 import { useGenre, type Genre } from '@/hooks/fetchGenre';
-import { Box, List, Text, Image, Link } from '@chakra-ui/react';
+import { Box, List, Text, Image, Link, Heading } from '@chakra-ui/react';
 
 import SpinnerComp from './SpinnerComp';
 import { getCroppedUrl } from '@/services/getCroppedUrl';
@@ -17,8 +17,11 @@ function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
   };
   return (
     <>
+      <Heading fontSize={'2xl'} marginBottom={3}>
+        Genres
+      </Heading>
       {error && <Text>{error.message}</Text>}
-      <Box padding={4}>
+      <Box>
         <List.Root variant={'plain'} gap={4}>
           {isLoading && <SpinnerComp />}
           {genres.map((genre) => (
@@ -33,6 +36,7 @@ function GenresList({ selectedGenre, onGenreSelect: onGenreSelect }: Props) {
                 src={getCroppedUrl(genre.image_background)}
                 width={'50px'}
                 borderRadius={'5px'}
+                objectFit="cover"
               />
               <Link
                 variant={'plain'}
